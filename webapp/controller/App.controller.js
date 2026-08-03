@@ -5,7 +5,7 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("novamart.distributors.inventoryportal.controller.App", {
-        
+
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRouteMatched(this.onRouteMatched, this);

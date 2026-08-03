@@ -55,7 +55,7 @@ sap.ui.define([
 
             var sProductId = oContext.getProperty("productId");
 
-            
+
             var oUIModel = this.getOwnerComponent().getModel("ui");
             if (oUIModel) {
                 oUIModel.setProperty("/layout", "TwoColumnsMidExpanded");
@@ -155,78 +155,73 @@ sap.ui.define([
         },
 
         _validateForm: function () {
+
             var bValid = true;
-            var sErrorMsg = "";
 
-            var oInpName = this.byId("inpEditName");
-            var oInpCategory = this.byId("inpEditCategory");
-            var oInpSKU = this.byId("inpEditSKU");
-            var oInpPrice = this.byId("inpEditPrice");
-            var oInpStock = this.byId("inpEditStock");
+            var aFields = [
+                {
+                    control: Fragment.byId(this.getView().getId(), "nameEdit"),
+                    name: "Product Name"
+                },
+                {
+                    control: Fragment.byId(this.getView().getId(), "categoryEdit"),
+                    name: "Category"
+                },
+                {
+                    control: Fragment.byId(this.getView().getId(), "skuEdit"),
+                    name: "SKU"
+                },
+                {
+                    control: Fragment.byId(this.getView().getId(), "priceEdit"),
+                    name: "Price"
+                },
+                {
+                    control: Fragment.byId(this.getView().getId(), "stockEdit"),
+                    name: "Stock"
+                }
+            ];
 
-            if (oInpName && (!oInpName.getValue() || !oInpName.getValue().trim())) {
-                oInpName.setValueState("Error");
-                oInpName.setValueStateText("Product Name is required.");
-                if (!sErrorMsg) sErrorMsg = "Product Name is required.";
-                bValid = false;
-            } else if (oInpName) {
-                oInpName.setValueState("None");
-            }
+            aFields.forEach(function (oField) {
 
-            if (oInpCategory && (!oInpCategory.getValue() || !oInpCategory.getValue().trim())) {
-                oInpCategory.setValueState("Error");
-                oInpCategory.setValueStateText("Category is required.");
-                if (!sErrorMsg) sErrorMsg = "Category is required.";
-                bValid = false;
-            } else if (oInpCategory) {
-                oInpCategory.setValueState("None");
-            }
+                var oInput = oField.control;
 
-            if (oInpSKU && (!oInpSKU.getValue() || !oInpSKU.getValue().trim())) {
-                oInpSKU.setValueState("Error");
-                oInpSKU.setValueStateText("SKU is required.");
-                if (!sErrorMsg) sErrorMsg = "SKU is required.";
-                bValid = false;
-            } else if (oInpSKU) {
-                oInpSKU.setValueState("None");
-            }
+                if (!oInput) {
+                    return;
+                }
 
-            if (oInpPrice) {
-                var fPrice = parseFloat(oInpPrice.getValue());
-                if (isNaN(fPrice) || fPrice < 0) {
-                    oInpPrice.setValueState("Error");
-                    oInpPrice.setValueStateText("Price cannot be negative or empty.");
-                    if (!sErrorMsg) sErrorMsg = "Price must be a valid number >= 0.";
+                var sValue = oInput.getValue().trim();
+
+                if (!sValue) {
+                    oInput.setValueState("Error");
+                    oInput.setValueStateText(oField.name + " is required");
                     bValid = false;
                 } else {
-                    oInpPrice.setValueState("None");
+                    oInput.setValueState("None");
                 }
-            }
 
-            if (oInpStock) {
-                var isStock = parseInt(oInpStock.getValue(), 10);
-                if (isNaN(isStock) || isStock < 0) {
-                    oInpStock.setValueState("Error");
-                    oInpStock.setValueStateText("Stock quantity cannot be negative or empty.");
-                    if (!sErrorMsg) sErrorMsg = "Stock Quantity must be a valid number >= 0.";
-                    bValid = false;
-                } else {
-                    oInpStock.setValueState("None");
-                }
-            }
+            });
 
-            this._sValidationError = sErrorMsg;
             return bValid;
         },
 
         _resetValidationStates: function () {
-            var aInputIds = ["inpEditName", "inpEditCategory", "inpEditSKU", "inpEditPrice", "inpEditStock"];
-            aInputIds.forEach(function (sId) {
-                var oControl = this.byId(sId);
-                if (oControl) {
-                    oControl.setValueState("None");
+
+            [
+                "nameEdit",
+                "categoryEdit",
+                "skuEdit",
+                "priceEdit",
+                "stockEdit"
+            ].forEach(function (sId) {
+
+                var oInput = Fragment.byId(this.getView().getId(), sId);
+
+                if (oInput) {
+                    oInput.setValueState("None");
                 }
+
             }.bind(this));
+
         },
 
         onEditProduct: function () {
@@ -302,7 +297,7 @@ sap.ui.define([
 
         onSaveProductDialog: function () {
             if (!this._validateForm()) {
-                MessageToast.show(this._sValidationError);
+                MessageBox.error("Please fill in all required fields.");
                 return;
             }
 

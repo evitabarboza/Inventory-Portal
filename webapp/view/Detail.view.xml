@@ -15,8 +15,8 @@
                     <Title text="{products>name}" />
                 </f:heading>
 
-             <!-- Exit Detail Page -->
-                <f:navigationActions>   
+                <!-- Exit Detail Page -->
+                <f:navigationActions>
                     <Button
                         icon="sap-icon://decline"
                         type="Transparent"
@@ -24,7 +24,6 @@
                         press=".onCloseDetailPress"
                     />
                 </f:navigationActions>
-
 
                 <!-- Edit, Delete and Restock Button  -->
                 <f:actions>
@@ -54,7 +53,6 @@
             </f:DynamicPageTitle>
         </f:title>
 
-
         <f:header>
             <f:DynamicPageHeader>
                 <HBox
@@ -62,8 +60,6 @@
                     alignItems="Center"
                     renderType="Bare"
                 >
-                
-
                     <!-- Image of the Product  -->
                     <Image
                         src="{products>imageUrl}"
@@ -120,7 +116,6 @@
                 </HBox>
             </f:DynamicPageHeader>
         </f:header>
-
 
         <!-- Product Information  -->
         <f:content>

@@ -45,7 +45,7 @@ sap.ui.define([
                 return "In Stock";
             }
         },
-        
+
 
         formatCurrency: function (fPrice) {
             if (!fPrice || isNaN(fPrice)) {
@@ -77,6 +77,6 @@ sap.ui.define([
             });
         }
 
-       
+
     };
 });

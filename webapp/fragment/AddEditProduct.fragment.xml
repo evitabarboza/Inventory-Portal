@@ -1,15 +1,14 @@
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns:f="sap.ui.layout.form">
-
+    xmlns:f="sap.ui.layout.form"
+>
     <Dialog
         id="dlgAddEditProduct"
         title="{dialog>/title}"
-        contentWidth="500px">
-
+        contentWidth="500px"
+    >
         <content>
-
             <f:SimpleForm
                 editable="true"
                 layout="ResponsiveGridLayout"
@@ -20,89 +19,110 @@
                 labelSpanL="4"
                 labelSpanM="4"
                 emptySpanL="0"
-                emptySpanM="0">
-
+                emptySpanM="0"
+            >
                 <f:content>
-
-                    <Label text="{i18n>name}" required="true"/>
+                    <Label
+                        text="{i18n>name}"
+                        required="true"
+                    />
                     <Input
                         id="nameEdit"
                         value="{dialog>/product/name}"
-                        liveChange=".onInputChange"/>
+                        liveChange=".onInputChange"
+                    />
 
-                    <Label text="{i18n>category}" required="true"/>
+                    <Label
+                        text="{i18n>category}"
+                        required="true"
+                    />
                     <Input
                         id="categoryEdit"
                         value="{dialog>/product/category}"
-                        liveChange=".onInputChange"/>
+                        liveChange=".onInputChange"
+                    />
 
-                    <Label text="{i18n>sku}" required="true"/>
+                    <Label
+                        text="{i18n>sku}"
+                        required="true"
+                    />
                     <Input
                         id="skuEdit"
                         value="{dialog>/product/sku}"
-                        liveChange=".onInputChange"/>
+                        liveChange=".onInputChange"
+                    />
 
-                    <Label text="{i18n>price}" required="true"/>
+                    <Label
+                        text="{i18n>price}"
+                        required="true"
+                    />
                     <Input
                         id="priceEdit"
                         type="Number"
                         value="{dialog>/product/price}"
-                        liveChange=".onInputChange"/>
+                        liveChange=".onInputChange"
+                    />
 
-                    <Label text="{i18n>stock}" required="true"/>
+                    <Label
+                        text="{i18n>stock}"
+                        required="true"
+                    />
                     <Input
                         id="stockEdit"
                         type="Number"
                         value="{dialog>/product/stock}"
-                        liveChange=".onInputChange"/>
+                        liveChange=".onInputChange"
+                    />
 
-                    <Label text="{i18n>reorderthreshold}"/>
+                    <Label text="{i18n>reorderthreshold}" />
                     <Input
                         id="reorderEdit"
                         type="Number"
-                        value="{dialog>/product/reorderThreshold}"/>
+                        value="{dialog>/product/reorderThreshold}"
+                    />
 
-                    <Label text="{i18n>supplier}"/>
+                    <Label text="{i18n>supplier}" />
                     <Input
                         id="supplierEdit"
-                        value="{dialog>/product/supplier}"/>
+                        value="{dialog>/product/supplier}"
+                    />
 
-                    <Label text="{i18n>warehouse}"/>
+                    <Label text="{i18n>warehouse}" />
                     <Input
                         id="warehouseEdit"
-                        value="{dialog>/product/warehouse}"/>
+                        value="{dialog>/product/warehouse}"
+                    />
 
-                    <Label text="{i18n>imageurl}"/>
+                    <Label text="{i18n>imageurl}" />
                     <Input
                         id="editImage"
                         value="{dialog>/product/imageUrl}"
-                        placeholder="https://example.com/image.png"/>
+                        placeholder="https://example.com/image.png"
+                    />
 
-                    <Label text="{i18n>description}"/>
+                    <Label text="{i18n>description}" />
                     <TextArea
                         id="descriptionEdit"
                         value="{dialog>/product/description}"
-                        rows="2"/>
-
+                        rows="2"
+                    />
                 </f:content>
-
             </f:SimpleForm>
-
         </content>
 
         <beginButton>
             <Button
                 text="Save"
                 type="Emphasized"
-                press=".onSaveProductDialog"/>
+                press=".onSaveProductDialog"
+            />
         </beginButton>
 
         <endButton>
             <Button
                 text="Cancel"
-                press=".onCancelProductDialog"/>
+                press=".onCancelProductDialog"
+            />
         </endButton>
-
     </Dialog>
-
 </core:FragmentDefinition>

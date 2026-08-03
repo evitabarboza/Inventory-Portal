@@ -123,7 +123,7 @@ sap.ui.define([
 
             var isStock = oContext.getProperty("stock");
 
-            isStock += 5;
+            isStock += 10;
 
             oModel.setProperty(
                 sPath + "/stock",
@@ -136,7 +136,7 @@ sap.ui.define([
             );
 
             MessageToast.show(
-                isStock + "units reordered successfully!"
+                isStock + " units reordered successfully!"
             );
 
         },

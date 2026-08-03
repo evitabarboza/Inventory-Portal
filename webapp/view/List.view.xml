@@ -4,7 +4,6 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
 >
-
     <!-- Title and Description of the Page  -->
     <Page
         id="listPage"
@@ -24,8 +23,7 @@
                 growing="true"
                 growingThreshold="20"
             >
-
-            <!-- Product with its number of items available  -->
+                <!-- Product with its number of items available  -->
                 <headerToolbar>
                     <OverflowToolbar id="toListHeader">
                         <Title
@@ -82,8 +80,6 @@
                     </OverflowToolbar>
                 </headerToolbar>
 
-
-
                 <!-- Columns defining the product in the List.view.xml  -->
                 <columns>
                     <Column width="14em">
@@ -117,7 +113,6 @@
                         <Text text="{i18n>stock}" />
                     </Column>
                 </columns>
-
 
                 <!-- Information of the product defined in the column list in List.view.xml  -->
                 <items>
