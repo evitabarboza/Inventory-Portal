@@ -69,7 +69,9 @@ inventory-portal/
 │   │
 │   └── css/
 │       └── style.css
-```
+|
+├── ui5-local.yaml
+├──ui5.yaml
 
 
 # 3. Features
