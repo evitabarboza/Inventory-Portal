@@ -4,7 +4,6 @@ A freestyle **SAPUI5** application developed as a Product Inventory & Order Mana
 
 The application is completely **client-side** and uses a **JSONModel** as its data source. No backend or database is used, making it suitable as a prototype or learning project for SAPUI5 development.
 
----
 
 # 1. How to Run
 
@@ -26,16 +25,10 @@ This launches the application in the SAP Fiori Launchpad sandbox.
 4. To run without the Launchpad:
 
 ```bash
-npm run start-noflp
+npm i -g @ui5/cli
+ui5 serve -o index.html
 ```
 
-5. To build the project:
-
-```bash
-npm run build
-```
-
----
 
 # 2. Project Structure
 
@@ -77,7 +70,6 @@ inventory-portal/
 │       └── style.css
 ```
 
----
 
 # 3. Features
 
@@ -104,7 +96,6 @@ inventory-portal/
   - Delete Product
   - Sort / Filter / Group
 
----
 
 ## Product Detail
 
@@ -129,7 +120,6 @@ Users can:
 - Reorder Stock
 - Navigate back to the Product List
 
----
 
 ## Add / Edit Product
 
@@ -144,7 +134,6 @@ Features include:
 
 Changes are reflected immediately in the JSON model.
 
----
 
 ## Search
 
@@ -153,7 +142,6 @@ Changes are reflected immediately in the JSON model.
   - Product Name
   - Product Category
 
----
 
 ## Sorting
 
@@ -164,7 +152,6 @@ Products can be sorted by:
 - Price
 - Stock Quantity
 
----
 
 ## Filtering
 
@@ -189,8 +176,6 @@ Products can be sorted by:
 - $100 – $500
 - Above $500
 
----
-
 ## Grouping
 
 Products can be grouped by:
@@ -198,7 +183,6 @@ Products can be grouped by:
 - Category
 - Supplier
 
----
 
 ## Stock Status
 
@@ -210,8 +194,6 @@ Stock status is determined using custom formatter functions.
 | 1 – 10 | Low Stock | Warning |
 | Greater than 10 | Available | Success |
 
----
-
 ## Responsive Layout
 
 The application uses **sap.f.FlexibleColumnLayout** to provide a responsive master-detail experience.
@@ -219,7 +201,6 @@ The application uses **sap.f.FlexibleColumnLayout** to provide a responsive mast
 - One-column layout for the Product List
 - Two-column layout when viewing Product Details
 
----
 
 ## Internationalization (i18n)
 
@@ -242,8 +223,6 @@ Localized content includes:
 - Filter Labels
 - Status Texts
 
----
-
 ## User Feedback
 
 The application uses:
@@ -259,8 +238,6 @@ to provide feedback for:
 - Reorder
 - Cancel Confirmation
 - Validation Errors
-
----
 
 # 4. SAPUI5 Concepts Covered
 
@@ -289,8 +266,6 @@ to provide feedback for:
 | Responsive Design | ✔ |
 | SAP Fiori Controls | ✔ |
 
----
-
 # 5. Technologies Used
 
 - SAPUI5
@@ -301,8 +276,6 @@ to provide feedback for:
 - JSON Model
 - CSS
 - Resource Bundles (i18n)
-
----
 
 # 6. Known Limitations
 
