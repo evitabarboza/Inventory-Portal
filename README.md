@@ -7,8 +7,9 @@ The application is completely **client-side** and uses a **JSONModel** as its da
 
 # 1. How to Run
 
-1. Open the project in **SAP Business Application Studio (BAS)**.
-2. Install project dependencies.
+1. Clone the project using the link: https://github.com/evitabarboza/Inventory-Portal.git
+2. Open the project in **SAP Business Application Studio (BAS)**.
+3. Install project dependencies.
 
 ```bash
 npm install

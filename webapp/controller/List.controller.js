@@ -74,7 +74,6 @@ sap.ui.define([
 
             aSelectedItems.forEach(function (oItem) {
                 var oProduct = oItem.getBindingContext("products").getObject();
-                console.log(oProduct.name);
             });
 
             this.byId("buttonEditProduct")
@@ -238,8 +237,6 @@ sap.ui.define([
                 .getBindingContext("products")
                 .getObject();
 
-            console.log("Editing product:", oProduct);
-
             this._resetValidationStates();
 
             this._oAddDialogModel.setData({
@@ -330,9 +327,8 @@ sap.ui.define([
 
             oProductsModel.setProperty("/products", aProducts);
 
-            MessageToast.show("New product added successfully!");
-
             this._resetValidationStates();
+
             this._pAddDialog.then(function (oDialog) {
                 oDialog.close();
             });
@@ -430,6 +426,34 @@ sap.ui.define([
                         case "above500":
                             aFilters.push(
                                 new Filter("price", FilterOperator.GT, 500)
+                            );
+                            break;
+                    }
+                } else if (sFilterPath === "stockStatus") {
+
+                    switch (sKey) {
+
+                        case "inStock":
+                            aFilters.push(
+                                new Filter("stock", FilterOperator.GT, 10)
+                            );
+                            break;
+
+                        case "lowStock":
+                            aFilters.push(
+                                new Filter({
+                                    filters: [
+                                        new Filter("stock", FilterOperator.GT, 0),
+                                        new Filter("stock", FilterOperator.LE, 10)
+                                    ],
+                                    and: true
+                                })
+                            );
+                            break;
+
+                        case "outOfStock":
+                            aFilters.push(
+                                new Filter("stock", FilterOperator.EQ, 0)
                             );
                             break;
                     }

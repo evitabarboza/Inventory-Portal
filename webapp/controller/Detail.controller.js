@@ -212,20 +212,37 @@ sap.ui.define([
             }
         },
 
-    
+
         _validateForm: function () {
 
             var bValid = true;
 
-            [
-                "inpEditName",
-                "inpEditCategory",
-                "inpEditSKU",
-                "inpEditPrice",
-                "inpEditStock"
-            ].forEach(function (sId) {
+            var aFields = [
+                {
+                    id: "nameEdit",
+                    name: "Product Name"
+                },
+                {
+                    id: "categoryEdit",
+                    name: "Category"
+                },
+                {
+                    id: "skuEdit",
+                    name: "SKU"
+                },
+                {
+                    id: "priceEdit",
+                    name: "Price"
+                },
+                {
+                    id: "stockEdit",
+                    name: "Stock"
+                }
+            ];
 
-                var oInput = this.byId(sId);
+            aFields.forEach(function (oField) {
+
+                var oInput = Fragment.byId(this.getView().getId(), oField.id);
 
                 if (!oInput) {
                     return;
@@ -233,22 +250,43 @@ sap.ui.define([
 
                 var sValue = oInput.getValue().trim();
 
+                // Required field validation
                 if (!sValue) {
-
                     oInput.setValueState("Error");
-
+                    oInput.setValueStateText(oField.name + " is required");
                     bValid = false;
-
-                } else {
-
-                    oInput.setValueState("None");
-
+                    return;
                 }
+
+                // Price validation
+                if (oField.name === "Price") {
+                    var fPrice = parseFloat(sValue);
+
+                    if (isNaN(fPrice) || fPrice < 0) {
+                        oInput.setValueState("Error");
+                        oInput.setValueStateText("Price must be a non-negative number");
+                        bValid = false;
+                        return;
+                    }
+                }
+
+                // Stock validation
+                if (oField.name === "Stock") {
+                    var iStock = parseInt(sValue, 10);
+
+                    if (isNaN(iStock) || iStock < 0) {
+                        oInput.setValueState("Error");
+                        oInput.setValueStateText("Stock must be a non-negative number");
+                        bValid = false;
+                        return;
+                    }
+                }
+
+                oInput.setValueState("None");
 
             }.bind(this));
 
             return bValid;
-
         },
 
         onSaveProductDialog: function () {
@@ -293,7 +331,7 @@ sap.ui.define([
 
         },
 
-    
+
         onCancelProductDialog: function () {
 
             this._pEditDialog.then(function (oDialog) {
@@ -303,19 +341,19 @@ sap.ui.define([
             });
 
         },
-        
+
 
         _resetValidationStates: function () {
 
             [
-                "inpEditName",
-                "inpEditCategory",
-                "inpEditSKU",
-                "inpEditPrice",
-                "inpEditStock"
+                "nameEdit",
+                "categoryEdit",
+                "skuEdit",
+                "priceEdit",
+                "stockEdit"
             ].forEach(function (sId) {
 
-                var oInput = this.byId(sId);
+                var oInput = Fragment.byId(this.getView().getId(), sId);
 
                 if (oInput) {
                     oInput.setValueState("None");
@@ -326,7 +364,7 @@ sap.ui.define([
         },
 
         onCloseDetailPress: function () {
-            
+
             var oUIModel = this.getOwnerComponent().getModel("ui");
             if (oUIModel) {
                 oUIModel.setProperty("/layout", "OneColumn");

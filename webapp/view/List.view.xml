@@ -139,17 +139,11 @@
                             <ObjectNumber
                                 number="{
                                     parts: [
-                                        {path:'products>price'},
-                                        {path:'products>currency'}
+                                        { path: 'products>price' },
+                                        { path: 'products>currency' }
                                     ],
-                                    type:'.formatter.Currency',
-                                    formatOptions:{
-                                        showMeasure:false
-                                    }
-                                }"
-                                unit="{products>currency}"
-                            />
-
+                                    formatter: '.formatter.formatPrice'
+                                }" />
                             <!-- Stock Count -->
                             <ObjectNumber
                                 id="stockCount"

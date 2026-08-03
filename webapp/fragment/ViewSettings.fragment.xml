@@ -22,7 +22,7 @@
 
             <ViewSettingsItem
                 id="sortStock"
-                text="{i18>stockqty}"
+                text="{i18n>stockqty}"
                 key="stock"
             />
 
@@ -48,38 +48,44 @@
         </groupItems>
 
         <filterItems>
-            <ViewSettingsFilterItem
+            <ViewSettingsFilterItem 
                 id="filterCategory"
                 text="{i18n>filterCategory}"
                 key="category"
             >
                 <items>
                     <ViewSettingsItem
+                        id="filterWarehouseEquipment"
                         text="{i18n>categoryWarehouseEquipment}"
                         key="Warehouse Equipment"
                     />
 
                     <ViewSettingsItem
+                        id="filterPackaging"
                         text="{i18n>categoryPackaging}"
                         key="Packaging"
                     />
 
                     <ViewSettingsItem
+                        id="filterSafetyGear"
                         text="{i18n>categorySafetyGear}"
                         key="Safety Gear"
                     />
 
                     <ViewSettingsItem
+                        id="filterOfficeEquipment"
                         text="{i18n>categoryOfficeEquipment}"
                         key="Office Equipment"
                     />
 
                     <ViewSettingsItem
+                        id="filterOfficeSupplies"
                         text="{i18n>categoryOfficeSupplies}"
                         key="Office Supplies"
                     />
 
                     <ViewSettingsItem
+                        id="filterTools"
                         text="{i18n>categoryTools}"
                         key="Tools"
                     />
@@ -93,16 +99,19 @@
             >
                 <items>
                     <ViewSettingsItem
+                        id="filterInStock"
                         text="{i18n>statusAvailable}"
                         key="inStock"
                     />
 
                     <ViewSettingsItem
+                        id="filterLowStock"
                         text="{i18n>statusLowStock}"
                         key="lowStock"
                     />
 
                     <ViewSettingsItem
+                        id="filterOutOfStock"
                         text="{i18n>statusOutOfStock}"
                         key="outOfStock"
                     />
@@ -110,21 +119,25 @@
             </ViewSettingsFilterItem>
 
             <ViewSettingsFilterItem
+                id="filterPrice"
                 text="{i18n>filterPriceRange}"
                 key="price"
             >
                 <items>
                     <ViewSettingsItem
+                        id="filterBelow100"
                         text="{i18n>priceRangeBelow100}"
                         key="below100"
                     />
 
                     <ViewSettingsItem
+                        id="filter100To500"
                         text="{i18n>priceRange100to500}"
                         key="100to500"
                     />
 
                     <ViewSettingsItem
+                        id="filterAbove500"
                         text="{i18n>priceRangeAbove500}"
                         key="above500"
                     />

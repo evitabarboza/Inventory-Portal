@@ -10,9 +10,9 @@
         showFooter="true"
     >
         <f:title>
-            <f:DynamicPageTitle>
+            <f:DynamicPageTitle id="detailPageTitle">
                 <f:heading>
-                    <Title text="{products>name}" />
+                    <Title  id="detailTitle" text="{products>name}" />
                 </f:heading>
 
                 <!-- Exit Detail Page -->
@@ -21,6 +21,7 @@
                         icon="sap-icon://decline"
                         type="Transparent"
                         tooltip="Close"
+                        id="btnClose"
                         press=".onCloseDetailPress"
                     />
                 </f:navigationActions>
@@ -31,6 +32,7 @@
                         text="{i18n>buttonReorder}"
                         icon="sap-icon://cart-3"
                         type="Transparent"
+                        id="btnReorder"
                         class="reorderButton"
                         press=".onReorderPress"
                     />
@@ -39,6 +41,7 @@
                         text="{i18n>buttonEdit}"
                         icon="sap-icon://edit"
                         type="Transparent"
+                        id="btnEdit"
                         press=".onEditPress"
                     />
 
@@ -46,6 +49,7 @@
                         text="{i18n>buttonDelete}"
                         icon="sap-icon://delete"
                         type="Reject"
+                        id="btnDelete"
                         class="deleteButton"
                         press=".onDeletePress"
                     />
@@ -65,14 +69,16 @@
                         src="{products>imageUrl}"
                         width="180px"
                         height="180px"
+                        id="productImage"
                         decorative="false"
                         visible="{= !!${products>imageUrl}}"
                         class="sapUiSmallMarginEnd"
                     />
 
                     <!-- Product Information -->
-                    <ObjectHeader
+                    <ObjectHeader id="productHeader"
                         title="{products>name}"
+
                         intro="{i18n>sku} : {products>sku}"
                         number="{
                             parts:[
@@ -87,7 +93,7 @@
                         numberUnit="{products>currency}"
                     >
                         <statuses>
-                            <ObjectStatus
+                            <ObjectStatus id="stockStatus"
                                 text="{
                                     path:'products>stock',
                                     formatter:'.formatter.formatStockStatusText'
@@ -120,11 +126,11 @@
         <!-- Product Information  -->
         <f:content>
             <VBox class="sapUiMediumMargin">
-                <Panel
+                <Panel id="productInfoPanel"
                     expandable="false"
                     headerText="{i18n>productInfo}"
                 >
-                    <form:SimpleForm
+                    <form:SimpleForm id="productInfoForm"
                         editable="false"
                         layout="ResponsiveGridLayout"
                         columnsXL="2"
@@ -135,7 +141,7 @@
                         <Label text="{i18n>description}" />
                         <Text text="{products>description}" />
 
-                        <Label text="{i18n>Category}" />
+                        <Label text="{i18n>category}" />
                         <Text text="{products>category}" />
 
                         <Label text="{i18n>supplier}" />
@@ -148,7 +154,7 @@
                         <Text text="{products>sku}" />
 
                         <Label text="{i18n>price}" />
-                        <ObjectNumber
+                        <ObjectNumber id="priceNumber"
                             number="{
                                 parts:[
                                     {path:'products>price'},

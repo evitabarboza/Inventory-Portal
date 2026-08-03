@@ -9,7 +9,7 @@
         contentWidth="500px"
     >
         <content>
-            <f:SimpleForm
+            <f:SimpleForm id="editProductForm"
                 editable="true"
                 layout="ResponsiveGridLayout"
                 columnsXL="1"
@@ -111,7 +111,7 @@
         </content>
 
         <beginButton>
-            <Button
+            <Button  id="btnSaveProduct"
                 text="Save"
                 type="Emphasized"
                 press=".onSaveProductDialog"
@@ -119,7 +119,7 @@
         </beginButton>
 
         <endButton>
-            <Button
+            <Button id="btnCancelProduct"
                 text="Cancel"
                 press=".onCancelProductDialog"
             />
