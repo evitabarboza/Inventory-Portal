@@ -1,0 +1,17 @@
+.deleteButton .sapMBtnContent,
+.deleteButton .sapMBtnIcon {
+    color: #bb0000;
+}
+
+.reorderButton .sapMBtnIcon,
+.reorderButton .sapMBtnContent {
+    color: #0070f2;
+}
+
+.productTable .sapMListTblRow:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.productTable .sapMListTblRow:nth-child(odd) {
+    background-color: #ffffff;
+}

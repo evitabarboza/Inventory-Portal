@@ -1,0 +1,135 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog
+        id="vsdProducts"
+        confirm=".onConfirmViewSettings"
+    >
+        <sortItems>
+            <ViewSettingsItem
+                id="sortName"
+                text="{i18n>name}"
+                key="name"
+                selected="true"
+            />
+
+            <ViewSettingsItem
+                id="sortPrice"
+                text="{i18n>price}"
+                key="price"
+            />
+
+            <ViewSettingsItem
+                id="sortStock"
+                text="{i18>stockqty}"
+                key="stock"
+            />
+
+            <ViewSettingsItem
+                id="sortCategory"
+                text="{i18n>category}"
+                key="category"
+            />
+        </sortItems>
+
+        <groupItems>
+            <ViewSettingsItem
+                id="groupCategory"
+                text="{i18n>category}"
+                key="category"
+            />
+
+            <ViewSettingsItem
+                id="groupSupplier"
+                text="{i18n>supplier}"
+                key="supplier"
+            />
+        </groupItems>
+
+        <filterItems>
+            <ViewSettingsFilterItem
+                id="filterCategory"
+                text="{i18n>filterCategory}"
+                key="category"
+            >
+                <items>
+                    <ViewSettingsItem
+                        text="{i18n>categoryWarehouseEquipment}"
+                        key="Warehouse Equipment"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>categoryPackaging}"
+                        key="Packaging"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>categorySafetyGear}"
+                        key="Safety Gear"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>categoryOfficeEquipment}"
+                        key="Office Equipment"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>categoryOfficeSupplies}"
+                        key="Office Supplies"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>categoryTools}"
+                        key="Tools"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+
+            <ViewSettingsFilterItem
+                id="filterStock"
+                text="{i18n>filterStockStatus}"
+                key="stockStatus"
+            >
+                <items>
+                    <ViewSettingsItem
+                        text="{i18n>statusAvailable}"
+                        key="inStock"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>statusLowStock}"
+                        key="lowStock"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>statusOutOfStock}"
+                        key="outOfStock"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+
+            <ViewSettingsFilterItem
+                text="{i18n>filterPriceRange}"
+                key="price"
+            >
+                <items>
+                    <ViewSettingsItem
+                        text="{i18n>priceRangeBelow100}"
+                        key="below100"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>priceRange100to500}"
+                        key="100to500"
+                    />
+
+                    <ViewSettingsItem
+                        text="{i18n>priceRangeAbove500}"
+                        key="above500"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

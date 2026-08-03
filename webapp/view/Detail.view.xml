@@ -1,0 +1,188 @@
+<mvc:View
+    controllerName="novamart.distributors.inventoryportal.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+>
+    <f:DynamicPage
+        id="detailPage"
+        showFooter="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{products>name}" />
+                </f:heading>
+
+             <!-- Exit Detail Page -->
+                <f:navigationActions>   
+                    <Button
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        tooltip="Close"
+                        press=".onCloseDetailPress"
+                    />
+                </f:navigationActions>
+
+
+                <!-- Edit, Delete and Restock Button  -->
+                <f:actions>
+                    <Button
+                        text="{i18n>buttonReorder}"
+                        icon="sap-icon://cart-3"
+                        type="Transparent"
+                        class="reorderButton"
+                        press=".onReorderPress"
+                    />
+
+                    <Button
+                        text="{i18n>buttonEdit}"
+                        icon="sap-icon://edit"
+                        type="Transparent"
+                        press=".onEditPress"
+                    />
+
+                    <Button
+                        text="{i18n>buttonDelete}"
+                        icon="sap-icon://delete"
+                        type="Reject"
+                        class="deleteButton"
+                        press=".onDeletePress"
+                    />
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <HBox
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                    renderType="Bare"
+                >
+                
+
+                    <!-- Image of the Product  -->
+                    <Image
+                        src="{products>imageUrl}"
+                        width="180px"
+                        height="180px"
+                        decorative="false"
+                        visible="{= !!${products>imageUrl}}"
+                        class="sapUiSmallMarginEnd"
+                    />
+
+                    <!-- Product Information -->
+                    <ObjectHeader
+                        title="{products>name}"
+                        intro="{i18n>sku} : {products>sku}"
+                        number="{
+                            parts:[
+                                {path:'products>price'},
+                                {path:'products>currency'}
+                            ],
+                            type:'sap.ui.model.type.Currency',
+                            formatOptions:{
+                                showMeasure:false
+                            }
+                        }"
+                        numberUnit="{products>currency}"
+                    >
+                        <statuses>
+                            <ObjectStatus
+                                text="{
+                                    path:'products>stock',
+                                    formatter:'.formatter.formatStockStatusText'
+                                }"
+                                state="{
+                                    path:'products>stock',
+                                    formatter:'.formatter.formatStockStatusState'
+                                }"
+                            />
+                        </statuses>
+
+                        <attributes>
+                            <ObjectAttribute
+                                text="{i18n>category} : {products>category}"
+                            />
+
+                            <ObjectAttribute
+                                text="{i18n>supplier} : {products>supplier}"
+                            />
+
+                            <ObjectAttribute
+                                text="{i18n>warehouse} : {products>warehouse}"
+                            />
+                        </attributes>
+                    </ObjectHeader>
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+
+        <!-- Product Information  -->
+        <f:content>
+            <VBox class="sapUiMediumMargin">
+                <Panel
+                    expandable="false"
+                    headerText="{i18n>productInfo}"
+                >
+                    <form:SimpleForm
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        columnsS="1"
+                    >
+                        <Label text="{i18n>description}" />
+                        <Text text="{products>description}" />
+
+                        <Label text="{i18n>Category}" />
+                        <Text text="{products>category}" />
+
+                        <Label text="{i18n>supplier}" />
+                        <Text text="{products>supplier}" />
+
+                        <Label text="{i18n>warehouse}" />
+                        <Text text="{products>warehouse}" />
+
+                        <Label text="{i18n>sku}" />
+                        <Text text="{products>sku}" />
+
+                        <Label text="{i18n>price}" />
+                        <ObjectNumber
+                            number="{
+                                parts:[
+                                    {path:'products>price'},
+                                    {path:'products>currency'}
+                                ],
+                                type:'sap.ui.model.type.Currency',
+                                formatOptions:{
+                                    showMeasure:false
+                                }
+                            }"
+                            unit="{products>currency}"
+                        />
+
+                        <Label text="{i18n>stockqty}" />
+                        <Text text="{products>stock} Units" />
+
+                        <Label text="{i18n>reorderthreshold}" />
+                        <Text text="{products>reorderThreshold} Units" />
+
+                        <Label text="{i18n>lastupdate}" />
+                        <Text
+                            text="{
+                                path:'products>lastUpdated',
+                                formatter:'.formatter.formatDate'
+                            }"
+                        />
+                    </form:SimpleForm>
+                </Panel>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

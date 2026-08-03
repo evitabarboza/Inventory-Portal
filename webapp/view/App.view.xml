@@ -1,0 +1,15 @@
+<mvc:View controllerName="novamart.distributors.inventoryportal.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    displayBlock="true"
+    height="100%">
+
+    <!-- <Page id="page" title="{i18n>title}">
+    </Page> -->
+
+    <f:FlexibleColumnLayout
+        id="fcl"
+        layout="OneColumn" />
+
+</mvc:View>

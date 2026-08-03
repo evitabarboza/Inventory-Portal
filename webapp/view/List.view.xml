@@ -1,0 +1,183 @@
+<mvc:View
+    controllerName="novamart.distributors.inventoryportal.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
+
+    <!-- Title and Description of the Page  -->
+    <Page
+        id="listPage"
+        title="{= ${i18n>appTitle} + ' - ' + ${i18n>appDescription} }"
+        showNavButton="false"
+    >
+        <content>
+            <Table
+                class="productTable"
+                id="productList"
+                items="{
+                    path: 'products>/products'
+                }"
+                mode="MultiSelect"
+                noDataText="{i18n>noDataText}"
+                selectionChange=".onProductSelect"
+                growing="true"
+                growingThreshold="20"
+            >
+
+            <!-- Product with its number of items available  -->
+                <headerToolbar>
+                    <OverflowToolbar id="toListHeader">
+                        <Title
+                            id="listTitle"
+                            text="{= ${i18n>availableProducts} +'-' + ' (' + ${products>/products}.length + ')' }"
+                            level="H2"
+                        />
+                        <ToolbarSpacer id="spcHeader" />
+
+                        <!-- Search Field  -->
+                        <SearchField
+                            id="searchField"
+                            width="40%"
+                            placeholder="{i18n>searchPlaceholder}"
+                            liveChange=".onSearch"
+                        />
+
+                        <!-- View Settings for sorting, filter and grouping  -->
+                        <Button
+                            id="buttonViewSettings"
+                            icon="sap-icon://filter"
+                            tooltip="Sort / Filter / Group"
+                            press=".onOpenViewSettings"
+                        />
+
+                        <!-- Add button to add a product  -->
+                        <Button
+                            id="buttonAddProduct"
+                            icon="sap-icon://add"
+                            text="{i18n>buttonAdd}"
+                            press=".onAddProduct"
+                        />
+
+                        <!-- Button to edit the product  -->
+                        <Button
+                            id="buttonEditProduct"
+                            icon="sap-icon://edit"
+                            text="{i18n>buttonEdit}"
+                            tooltip="Edit Product"
+                            press=".onEditProduct"
+                            enabled="true"
+                        />
+
+                        <!-- Button to delete the product  -->
+                        <Button
+                            id="buttonDeleteProduct"
+                            icon="sap-icon://delete"
+                            type="Transparent"
+                            text="{i18n>buttonDelete}"
+                            tooltip="Delete Selected Products"
+                            press=".onDeleteProduct"
+                            enabled="false"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+
+
+
+                <!-- Columns defining the product in the List.view.xml  -->
+                <columns>
+                    <Column width="14em">
+                        <Text text="{i18n>product}" />
+                    </Column>
+
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>category}" />
+                    </Column>
+
+                    <Column hAlign="End">
+                        <Text text="{i18n>price}" />
+                    </Column>
+
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="{i18n>stockTake}" />
+                    </Column>
+
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="{i18n>stock}" />
+                    </Column>
+                </columns>
+
+
+                <!-- Information of the product defined in the column list in List.view.xml  -->
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onProductPress"
+                        vAlign="Middle"
+                    >
+                        <cells>
+                            <!-- Product -->
+                            <ObjectIdentifier
+                                id="iProductName"
+                                title="{products>name}"
+                                text="ID: {products>productId}"
+                            />
+
+                            <!-- Category -->
+                            <Text
+                                id="category"
+                                text="{products>category}"
+                            />
+
+                            <!-- Price -->
+                            <ObjectNumber
+                                number="{
+                                    parts: [
+                                        {path:'products>price'},
+                                        {path:'products>currency'}
+                                    ],
+                                    type:'.formatter.Currency',
+                                    formatOptions:{
+                                        showMeasure:false
+                                    }
+                                }"
+                                unit="{products>currency}"
+                            />
+
+                            <!-- Stock Count -->
+                            <ObjectNumber
+                                id="stockCount"
+                                number="{products>stock}"
+                                unit="Units"
+                            />
+
+                            <!-- Stock Status -->
+                            <ObjectStatus
+                                id="stockStatus"
+                                text="{
+                                    path:'products>stock',
+                                    formatter:'.formatter.formatStockStatusText'
+                                }"
+                                state="{
+                                    path:'products>stock',
+                                    formatter:'.formatter.formatStockStatusState'
+                                }"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
