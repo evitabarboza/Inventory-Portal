@@ -71,7 +71,7 @@ inventory-portal/
 │       └── style.css
 |
 ├── ui5-local.yaml
-├──  ui5.yaml
+├── ui5.yaml
 ```
 
 
